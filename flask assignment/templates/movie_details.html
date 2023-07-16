@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #movie-details {
+            text-align: center;
+        }
+        #movie-poster {
+            width: 300px;
+            height: 450px;
+            margin: 20px auto;
+            border-radius: 7px;
+            box-shadow: 0px 0px 5px grey;
+        }
+        #movie-info {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="movie-details">
+        <img id="movie-poster" src="http://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="Movie Poster">
+        <div id="movie-info">
+            <p><strong>Title:</strong> {{ movie.title }}</p>
+            <p><strong>Overview:</strong> {{ movie.overview }}</p>
+            <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+            <p><strong>Popularity:</strong> {{ movie.popularity }}</p>
+        </div>
+    </div>
+</body>
+</html>
