@@ -1,10 +1,24 @@
 from flask import Flask, render_template, jsonify, request
 import urllib.request, json
 import os
+from flask_httpauth import HTTPBasicAuth
 
 app = Flask(__name__)
+auth = HTTPBasicAuth()
+
+user_data = {
+    "admin": "password",
+    "admin1": "password"
+}
+
+@auth.verify_password
+def verify(username, pwd):
+    if not(username and pwd):
+        return False
+    return user_data.get(username) == pwd
 
 @app.route("/")
+@auth.login_required
 def get_movies():
     url = "https://api.themoviedb.org/3/discover/movie?api_key=78a5ffaa7ce2c9e99067bfe14119748a"
 
